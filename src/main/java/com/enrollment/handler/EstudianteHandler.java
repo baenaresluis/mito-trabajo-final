@@ -43,7 +43,7 @@ public class EstudianteHandler {
 				.switchIfEmpty(ServerResponse.notFound().build());
 	}
 	
-	public Mono<ServerResponse> listaEstOrdenada(){
+	public Mono<ServerResponse> listaEstOrdenada(ServerRequest req){
 		return ServerResponse
 				.ok()
 				.contentType(MediaType.APPLICATION_JSON)
