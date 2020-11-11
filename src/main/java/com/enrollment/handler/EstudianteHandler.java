@@ -43,6 +43,13 @@ public class EstudianteHandler {
 				.switchIfEmpty(ServerResponse.notFound().build());
 	}
 	
+	public Mono<ServerResponse> listaEstOrdenada(){
+		return ServerResponse
+				.ok()
+				.contentType(MediaType.APPLICATION_JSON)
+				.body(service.listaEstOrdenada(), Estudiante.class);
+	}
+	
 	public Mono<ServerResponse> registrar(ServerRequest req){
 		Mono<Estudiante> monoEstudiante = req.bodyToMono(Estudiante.class);
 		return monoEstudiante

@@ -49,7 +49,16 @@ public class EstudianteController {
 						.body(e)
 						)
 				.defaultIfEmpty(ResponseEntity.notFound().build());
-						}
+	}
+	
+	@GetMapping("ordenado")
+	public Mono<ResponseEntity<Flux<Estudiante>>> listaEstOrdenada(){
+		Flux<Estudiante> fxEstudiantes = service.listaEstOrdenada();
+		return Mono.just(ResponseEntity.ok()
+				.contentType(MediaType.APPLICATION_JSON)
+				.body(fxEstudiantes)
+				);
+	}
 	
 	@PostMapping
 	public Mono<ResponseEntity<Estudiante>> registrar(@Valid @RequestBody Estudiante estudiante, final ServerHttpRequest req){
